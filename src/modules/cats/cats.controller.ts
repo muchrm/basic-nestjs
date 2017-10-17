@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
+import { Observable } from 'rxjs/Observable';
 
 @Controller('cats')
 export class CatsController {
@@ -13,7 +14,7 @@ export class CatsController {
   }
 
   @Get()
-  async findAll(): Promise<Cat[]> {
+  findAll(): Observable<Cat[]> {
     return this.catsService.findAll();
   }
 }
