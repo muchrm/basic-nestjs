@@ -1,5 +1,5 @@
 import { AggregateRoot } from "@nestjs/cqrs";
-import { CatCreatedEvent } from "../event/cat-created.event";
+import { CatCreatedEvent } from "../events/impl/cat-created.event";
 
 export class Cat extends AggregateRoot {
     constructor(private readonly id: string) {
