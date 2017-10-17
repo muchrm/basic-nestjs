@@ -15,7 +15,11 @@ export class CreateCatHandler implements ICommandHandler<CreateCatCommand> {
     console.log(clc.greenBright('CreateCatCommand...'));
 
     const { cat } = command;
-    await this.repository.createCat(cat),
+    
+    const hero = this.publisher.mergeObjectContext(
+      await this.repository.createCat(cat),
+    );
+    hero.commit();
     resolve();
   }
 }

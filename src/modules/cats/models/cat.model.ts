@@ -1,13 +1,9 @@
 import { AggregateRoot } from "@nestjs/cqrs";
 import { CatCreatedEvent } from "../events/impl/cat-created.event";
-
+import {Cat as Icat} from "../interfaces/cat.interface"
 export class Cat extends AggregateRoot {
-    constructor(private readonly id: string) {
+    constructor() {
       super();
-    }
-  
-    killEnemy(enemyId: string) {
-      // logic
-      this.apply(new CatCreatedEvent(this.id, enemyId));
+      this.apply(new CatCreatedEvent());
     }
   }
